@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0-modified | 20110126
+   License: none (public domain)
+*/
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.input-form-default {
+    border: 1px solid #c0c0c0;
+    border-radius: 20px;
+}
+
+.btn-defaul {
+    background: #f0503b;
+    border: 1px solid #f0503b;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px 40px;
+    color: #FFF;
+    border-radius: 20px;
+}

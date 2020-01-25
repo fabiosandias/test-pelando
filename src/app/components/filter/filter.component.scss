@@ -1,0 +1,35 @@
+.filter {
+    display: flex;
+    width  : 100%;
+}
+
+@media (max-height: 768px) {
+    .filter {
+        flex-flow      : column;
+        align-items    : center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .filter__box-field {
+        margin-bottom: 20px;
+    }
+    .filter__field-input {
+        width: calc(90% - 20px);
+        padding: 5px 20px;
+    }
+    .filter__box-field, .filter__box-button {
+        width: 100%;
+    }
+
+    .filter__field-button {
+        width: calc(100% - 20px);
+        padding: 5px 20px;
+        background: rgb(158,68,7);
+        background: linear-gradient(180deg, rgba(158,68,7,1) 0%, rgba(168,72,4,1) 26%, rgba(241,111,19,1) 100%);
+    }
+
+    
+
+
+}
