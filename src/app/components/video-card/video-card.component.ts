@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VideoCardComponent implements OnInit {
 
+  isResult: boolean = false;
+
   constructor() { }
 
   ngOnInit() {

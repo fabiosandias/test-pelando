@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { YoutubeService } from './services/youtube.service'
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -11,6 +13,9 @@ import { VideoCardComponent } from './components/video-card/video-card.component
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
+import { SearchResultComponent } from './components/search-result/search-result.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,15 +25,20 @@ import { ROUTES } from './app.routes';
     AddVideoComponent,
     DividerComponent,
     VideoCardComponent,
-    HomeComponent
+    HomeComponent,
+    SearchResultComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    YoutubeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

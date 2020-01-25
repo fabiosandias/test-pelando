@@ -1,9 +1,29 @@
 .filter {
     display: flex;
     width  : 100%;
+    flex-wrap: wrap;
 }
 
-@media (max-height: 768px) {
+@media (min-width: 768px) {
+    .filter__box-field {
+        flex: 8;
+        margin-right: 30px;
+    }
+    
+    .filter__box-button {
+        flex: 2;
+    }
+
+    .filter__field-input {
+        width: 90%;
+        padding: 6px 20px;
+    }
+    .btn-default {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
     .filter {
         flex-flow      : column;
         align-items    : center;
@@ -25,8 +45,7 @@
     .filter__field-button {
         width: calc(100% - 20px);
         padding: 5px 20px;
-        background: rgb(158,68,7);
-        background: linear-gradient(180deg, rgba(158,68,7,1) 0%, rgba(168,72,4,1) 26%, rgba(241,111,19,1) 100%);
+        border    : none;
     }
 
     

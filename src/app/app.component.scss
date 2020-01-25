@@ -1,5 +1,22 @@
 .root {
     display: flex;
     flex-flow: column;
+    align-items: center;
+}
+
+.root__wrapper-header, .root__wrapper-form, .root__wrapper-body {
+    width: 1170px;
+    
+}
+
+@media (max-width: 768px) {
+    .root {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+    }
+    .root__wrapper-header, .root__wrapper-form, .root__wrapper-body {
+        width: 100%;
+    }
 }
 

@@ -6,17 +6,31 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import "~@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "~@fortawesome/fontawesome-free/scss/solid.scss";
+@import "~@fortawesome/fontawesome-free/scss/brands.scss";
+
+
 .input-form-default {
-    border: 1px solid #c0c0c0;
+    border       : 1px solid #c0c0c0;
     border-radius: 20px;
 }
 
-.btn-defaul {
-    background: #f0503b;
-    border: 1px solid #f0503b;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 5px 40px;
-    color: #FFF;
+.btn-default {
+    font-size    : 16px;
+    font-weight  : 700;
+    padding      : 5px 40px;
+    color        : #FFF;
     border-radius: 20px;
+}
+
+.grey-background {
+    background: rgb(103, 98, 95);
+    background: linear-gradient(180deg, rgba(103, 98, 95, 1) 0%, rgba(191, 178, 169, 1) 26%, rgba(232, 222, 215, 1) 100%);
+}
+
+.orange-background {
+    background: rgb(158,68,7);
+    background: linear-gradient(180deg, rgba(158,68,7,1) 0%, rgba(168,72,4,1) 26%, rgba(241,111,19,1) 100%);
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { YoutubeService } from 'src/app/services/youtube.service';
 
 @Component({
   selector: 'tes-home',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  
+  videos: YoutubeService[];
 
-  constructor() { }
+  constructor(private youtube: YoutubeService) { }
+
 
   ngOnInit() {
+    this.youtube.getVideos().subscribe(response => this.videos = response);
   }
 
 }

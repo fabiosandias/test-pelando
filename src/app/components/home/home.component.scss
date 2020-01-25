@@ -1,0 +1,14 @@
+.home {
+    padding:  20px 0;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows   : auto;
+}
+
+@media (max-width: 768px) {
+    .home {
+        grid-template-columns: 1fr;
+        grid-template-rows   : 1fr;
+    }
+}

@@ -1,9 +1,19 @@
 <div class="video-card">
-    <div class="video-card__media">
-        <span class="video-card__play"></span>
-        <span class="video-card__close"></span>
+    <div class="video-card__checkbox" *ngIf="isResult">
+        <span><input type="checkbox"></span>
     </div>
-    <div class="video-card__title">
-        <p>Titulo do video vai aqui</p>
+    <div class="video-card__content">
+        <div class="video-card__content-media">
+            
+        </div>
+        <div class="video-card__title">
+            <p><span class="video-card__title--number">1</span> Titulo do video vai aqui</p>
+        </div>
+        <span class="video-card__play">
+            <button class="video-card__play--btn orange-background"><i class="fa fa-play"></i></button>
+        </span>
+        <span class="video-card__close">
+            <button class="video-card__close--btn grey-background"><i class="fa fa-times"></i></button>
+        </span>
     </div>
 </div>

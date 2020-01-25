@@ -1,0 +1,1 @@
+export const YOUTUBE_API = 'https://testapi.io/api/redealumni/scholarships';
