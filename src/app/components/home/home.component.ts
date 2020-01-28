@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { YoutubeService } from 'src/app/services/youtube.service';
 import { LocalstorageService } from '../../services/localstorage.service';
 import { YoutubeInterface } from '../../services/youtube.interface';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -12,7 +13,11 @@ import { YoutubeInterface } from '../../services/youtube.interface';
 export class HomeComponent implements OnInit {
   public videos: YoutubeInterface
   
-  constructor(private youtube: YoutubeService, private localStorage: LocalstorageService) {
+  constructor(
+    private youtube: YoutubeService, 
+    private localStorage: LocalstorageService,
+    private toast: ToastrService
+  ) {
    
   }
 
@@ -29,8 +34,13 @@ export class HomeComponent implements OnInit {
           thumbnails: response.items[0].snippet.thumbnails.high.url,
           play: false
         }
-        this.localStorage.save(video);
-        this.videos = this.localStorage.getAll();
+        if (this.localStorage.save(video)) {
+          this.videos = this.localStorage.getAll();
+          this.toast.success('Video salvo com sucesso!', 'Sucesso!');
+        } else {
+          this.toast.error('Este video não existe ou ja foi salvo na sua lista!', 'Opss!');
+        }
+        
     });
   }
 

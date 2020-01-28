@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'ngx-webstorage-service';
+import { ToastrModule } from 'ngx-toastr'
 
 import { YoutubeService } from './services/youtube.service'
 import { LocalstorageService } from './services/localstorage.service'
@@ -30,7 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     VideoCardComponent,
     HomeComponent,
     SearchResultComponent,
-    ModalComponent
+    ModalComponent,
+    
   ],
   imports: [
   BrowserModule,
@@ -39,7 +42,9 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot(ROUTES),
     HttpClientModule,
     FormsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     YoutubeService,

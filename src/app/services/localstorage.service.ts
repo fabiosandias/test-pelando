@@ -17,9 +17,15 @@ export class LocalstorageService {
 
 
 
-  public save(video: YoutubeInterface): void {
+  public save(video: YoutubeInterface): boolean {
 
     const anotherTodolist = this.storage.get(STORAGE_KEY) || [];
+
+    const videoAlreadyExist = anotherTodolist.find(item => item.id === video.id);
+
+    if (videoAlreadyExist) {
+      return false;
+    }
 
     anotherTodolist.push({
       title: video.title,
@@ -27,8 +33,10 @@ export class LocalstorageService {
       id: video.id,
       play: video.play
     });
-    debugger
+
     this.storage.set(STORAGE_KEY, anotherTodolist);
+
+    return true;
   }
 
   public getAll(): YoutubeInterface {

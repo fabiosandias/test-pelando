@@ -11,6 +11,8 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import "~@fortawesome/fontawesome-free/scss/solid.scss";
 @import "~@fortawesome/fontawesome-free/scss/brands.scss";
 
+@import "../node_modules/ngx-toastr/toastr.css";
+
 
 .input-form-default {
     border       : 1px solid #c0c0c0;
