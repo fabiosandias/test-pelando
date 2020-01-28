@@ -1,8 +1,15 @@
 <div class="add-video">
     <div class="add-video__box-field">
-        <input type="text" class="add-video__field-input input-form-default">
+        <input type="text" ngModel [(ngModel)]="searchValue" class="add-video__field-input input-form-default">
     </div>
     <div class="add-video__box-button">
-        <button type="button" class="add-video__button btn-default orange-background">Add video</button>
+        <button 
+            type="button" 
+            class="add-video__button btn-default orange-background"
+            (click)="searchVideo()"
+        >
+            <span *ngIf="isUrl()">Adicionar</span>
+            <span *ngIf="!isUrl()">Buscar</span>
+        </button>
     </div>
 </div>

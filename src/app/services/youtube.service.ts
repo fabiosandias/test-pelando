@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { retry, catchError, map} from 'rxjs/operators';
 import { Youtube } from './youtybe';
 import { YOUTUBE_API } from '../app.api';
 
@@ -11,6 +11,7 @@ import { YOUTUBE_API } from '../app.api';
 
 export class YoutubeService {
 
+  private apiKey : string = 'AIzaSyAeA1JzwqWQC9uM0d3HwrWvY_ZYjPgZiuo'
   videos: Youtube;
 
   constructor(private http: HttpClient) { }
@@ -23,8 +24,18 @@ export class YoutubeService {
     })
   }
 
-  getVideos(): Observable<any> {
-    return this.http.get<any>(`${YOUTUBE_API}`)
+  getByTitle(title, maxResults): Observable<any> {
+    const url = `${YOUTUBE_API}?key=${this.apiKey}&title=${title}&order=date&part=snippet&type=video,id&maxResults=${maxResults}`
+    return this.http.get<any>(url, this.httpOptions)
+      .pipe(
+        retry(1),
+        catchError(this.errorHandl)
+      );
+  }
+
+  getByUrl(id, maxResults): Observable<any> {
+    const url = `${YOUTUBE_API}?key=${this.apiKey}&id=${id}&order=date&part=snippet&type=video,id&maxResults=${maxResults}`
+    return this.http.get<any>(url, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.errorHandl)

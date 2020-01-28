@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { YoutubeService } from 'src/app/services/youtube.service';
+import { LocalstorageService } from '../../services/localstorage.service';
+import { YoutubeInterface } from '../../services/youtube.interface';
+
 
 @Component({
   selector: 'tes-home',
@@ -7,14 +10,43 @@ import { YoutubeService } from 'src/app/services/youtube.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  public videos: YoutubeInterface
   
-  videos: YoutubeService[];
-
-  constructor(private youtube: YoutubeService) { }
-
+  constructor(private youtube: YoutubeService, private localStorage: LocalstorageService) {
+   
+  }
 
   ngOnInit() {
-    this.youtube.getVideos().subscribe(response => this.videos = response);
+    this.videos = this.localStorage.getAll()
+  }
+
+
+  seachVideoByUrl(id) {
+    this.youtube.getByUrl(id, 4).subscribe(response => {
+        const video: YoutubeInterface = {
+          id: response.items[0].id,
+          title: response.items[0].snippet.title,
+          thumbnails: response.items[0].snippet.thumbnails.high.url,
+          play: false
+        }
+        this.localStorage.save(video);
+        this.videos = this.localStorage.getAll();
+    });
+  }
+
+
+  stopVideo(video: YoutubeInterface) {
+    
+    for (let v in this.videos) {
+      if (this.videos[v].id != video.id) {
+        this.videos[v].play = false;
+      }
+    }
+  }
+
+  deleteVideo(video: YoutubeInterface) {
+    this.localStorage.deleteVideo(video);
+    this.videos = this.localStorage.getAll();
   }
 
 }

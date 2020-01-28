@@ -1,5 +1,18 @@
 .home {
     padding:  20px 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    
+}
+
+.home__form {
+    width: 1170px;
+    margin-bottom: 30px;
+}
+
+.home__cards {
+    width: 1170px;
     display: grid;
     grid-gap: 20px;
     grid-template-columns: 1fr 1fr 1fr;
@@ -8,7 +21,19 @@
 
 @media (max-width: 768px) {
     .home {
+        padding:  20px 0;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        
+    }
+    .home__cards {
+        width: 100%;
         grid-template-columns: 1fr;
         grid-template-rows   : 1fr;
+        padding: 20px;
+    }
+    .home__form {
+        width: 100%;
     }
 }

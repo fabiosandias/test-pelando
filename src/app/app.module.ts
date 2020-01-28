@@ -1,7 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { YoutubeService } from './services/youtube.service'
+import { LocalstorageService } from './services/localstorage.service'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,14 +33,17 @@ import { HttpClientModule } from '@angular/common/http';
     ModalComponent
   ],
   imports: [
-    BrowserModule,
+  BrowserModule,
     AppRoutingModule,
     RouterModule,
     RouterModule.forRoot(ROUTES),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    StorageServiceModule
   ],
   providers: [
-    YoutubeService
+    YoutubeService,
+    LocalstorageService
   ],
   bootstrap: [AppComponent]
 })
