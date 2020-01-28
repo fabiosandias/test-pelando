@@ -11,7 +11,7 @@ import { YOUTUBE_API } from '../app.api';
 
 export class YoutubeService {
 
-  private apiKey : string = 'AIzaSyAeA1JzwqWQC9uM0d3HwrWvY_ZYjPgZiuo'
+  private apiKey : string = 'YOUR_API_KEY'
   videos: Youtube;
 
   constructor(private http: HttpClient) { }
