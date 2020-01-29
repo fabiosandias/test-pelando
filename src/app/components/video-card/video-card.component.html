@@ -3,20 +3,23 @@
         <span><input type="checkbox"></span>
     </div>
     <div class="video-card__content">
-        <div class="video-card__content-media iframe-container">
+    <div class="video-card__content-media iframe-container">
 
-            <img *ngIf="!video.play" [src]="video.thumbnails" alt="" class="thumbnail">
-            <iframe
-                *ngIf="video.play"
+            <!-- <img [hidden]="video.play" [src]="video.thumbnails" alt="" class="thumbnail"> -->
+            <div id="player">
+                <!-- <iframe
+                id="player_{{index}}"
+                [hidden]="!video.play"
                 width="560" 
                 height="315" 
                 [src]="getUrlEmbad(video.id)" 
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-                autoplay="1"
+                autoplay="0"
                 allowfullscreen
             >
-            </iframe>
+            </iframe> -->
+            </div>
         
         </div>
         <div class="video-card__title">
@@ -25,7 +28,7 @@
         <span class="video-card__play">
             <button 
                 class="video-card__play--btn orange-background"
-                (click)="onPlayerStateChange(); stopAllVideo(video)"
+                (click)="onPlayer(); stopAllVideo(video)"
             >
                 <i class="fa fa-play" *ngIf="!video.play"></i>
                 <i class="fa fa-stop" *ngIf="video.play"></i>

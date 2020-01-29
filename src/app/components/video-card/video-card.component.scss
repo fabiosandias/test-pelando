@@ -1,99 +1,107 @@
 .video-card {
-    padding   : 10px;
-    height    : 210px;
-    display   : flex;
+    padding: 10px;
+    height : 210px;
+    display: flex;
 }
 
 .video-card__checkbox {
-    flex: 1;
-    display: flex;
+    flex       : 1;
+    display    : flex;
     align-items: center;
 }
+
 .video-card__content-media {
     position: relative;
-    height: 270px;  
+    height  : 270px;
     overflow: hidden;
-    border: 1px solid #000;
+    border  : 1px solid #000;
 }
+
 .video-card__content-media img {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    height: 100%;
-    width: auto;
-    transform: translate(-50%,-50%);  
+    position : absolute;
+    left     : 50%;
+    top      : 50%;
+    height   : 100%;
+    width    : auto;
+    transform: translate(-50%, -50%);
 }
 
 .video-card__content-media img.thumbnail {
-    width: 100%;
+    width : 100%;
     height: auto;
-  }
+}
 
 .video-card__content {
-    flex: 13;
-    width: 100%;
+    flex    : 13;
+    width   : 100%;
     position: relative;
 }
 
 .video-card__play {
     position: absolute;
-    bottom: -13px;
-    left: 20px;
+    bottom  : -13px;
+    left    : 20px;
 }
 
 .video-card__close {
     position: absolute;
-    bottom: -13px;
-    right: 20px;
+    bottom  : -13px;
+    right   : 20px;
 
 }
 
 .video-card__title {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    padding-top: 20px;
-    font-weight: 600;
-    color: #333;
+    padding-top    : 20px;
+    font-weight    : 600;
+    color          : #333;
 }
 
 .video-card__title--number {
     color: #f16f13;
 }
 
-.video-card__play--btn, .video-card__close--btn {
-    border: none;
-    width: 40px;
-    height: 40px;
+.video-card__play--btn,
+.video-card__close--btn {
+    border       : none;
+    width        : 40px;
+    height       : 40px;
     border-radius: 100%;
-    font-size: 16px;
-    
+    font-size    : 16px;
+
 }
+
 .video-card__play--btn {
     color: #FFF;
 }
+
 .video-card__close--btn {
     color: #333;
-    
+
 }
 
-.iframe-container{
-    position: relative;
-    width: 100%;
-    padding-bottom: 56.25%; 
-    height: 0;
-  }
-  .iframe-container iframe{
+.iframe-container {
+    position      : relative;
+    padding-bottom: 56.25%;
+    padding-top   : 30px;
+    height        : 0;
+    overflow      : hidden;
+}
+
+.iframe-container iframe
+.iframe-container object,
+.iframe-container embed {
     position: absolute;
-    top:0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+    top     : 0;
+    left    : 0;
+    width   : 100%;
+    height  : 100%;
+}
 
 
-  @media (max-width: 768px) {
+@media (max-width: 768px) {
     .video-card__content {
         height: 75%;
     }
-  }
- 
+}

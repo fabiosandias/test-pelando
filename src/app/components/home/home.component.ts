@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class HomeComponent implements OnInit {
   public videos: YoutubeInterface
+  public tag:any;
   
   constructor(
     private youtube: YoutubeService, 
@@ -22,6 +23,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.tag = document.createElement('script');
+    this.tag.src = 'https://www.youtube.com/iframe_api';
+    let firstScriptTag = (<any>window).document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(this.tag, firstScriptTag);
+
     this.videos = this.localStorage.getAll()
   }
 

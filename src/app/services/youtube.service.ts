@@ -11,7 +11,7 @@ import { YOUTUBE_API } from '../app.api';
 
 export class YoutubeService {
 
-  private apiKey : string = 'YOUR_API_KEY'
+  private apiKey : string = 'AIzaSyAeA1JzwqWQC9uM0d3HwrWvY_ZYjPgZiuo'
   videos: Youtube;
 
   constructor(private http: HttpClient) { }
@@ -34,7 +34,7 @@ export class YoutubeService {
   }
 
   getByUrl(id, maxResults): Observable<any> {
-    const url = `${YOUTUBE_API}?key=${this.apiKey}&id=${id}&order=date&part=snippet&type=video,id&maxResults=${maxResults}`
+    const url = `${YOUTUBE_API}?key=${this.apiKey}&id=${id}&order=date&part=snippet&type=video,id&maxResults=${maxResults}&origin=http://localhost:4200';`
     return this.http.get<any>(url, this.httpOptions)
       .pipe(
         retry(1),
