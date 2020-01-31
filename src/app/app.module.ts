@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { ToastrModule } from 'ngx-toastr'
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 import { YoutubeService } from './services/youtube.service'
 import { LocalstorageService } from './services/localstorage.service'
@@ -17,7 +18,7 @@ import { DividerComponent } from './components/divider/divider.component';
 import { VideoCardComponent } from './components/video-card/video-card.component';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from '@angular/router';
-import { ROUTES } from './app.routes';
+
 import { SearchResultComponent } from './components/search-result/search-result.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,17 +34,17 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     SearchResultComponent,
     ModalComponent,
-    
+
   ],
   imports: [
-  BrowserModule,
+    BrowserModule,
     AppRoutingModule,
     RouterModule,
-    RouterModule.forRoot(ROUTES),
     HttpClientModule,
     FormsModule,
     StorageServiceModule,
     ToastrModule.forRoot(),
+    NgxYoutubePlayerModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [

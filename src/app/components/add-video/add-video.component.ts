@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { YoutubeService } from '../../services/youtube.service';
 import { LocalstorageService } from '../../services/localstorage.service';
-import { Observable, Subject } from 'rxjs';
+
 
 @Component({
   selector: 'tes-add-video',
@@ -13,15 +13,12 @@ export class AddVideoComponent implements OnInit {
   searchValue: string = '';
   videos: YoutubeService[];
 
-  @Output() seachVideoByUrl = new EventEmitter()
+  @Output() seachVideoByUrl = new EventEmitter();
+  @Output() searchByTitle = new EventEmitter();
 
 
   constructor(private youtube: YoutubeService, private localStorage: LocalstorageService) { }
-
-
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   isUrl() {
     if (!this.searchValue) {
@@ -32,15 +29,15 @@ export class AddVideoComponent implements OnInit {
     return !!regex.test(this.searchValue);
   }
 
-  searchVideo() {
+  searchVideo(title) {
+    debugger;
     if (this.isUrl()) {
       const id = this.getUrlId(this.searchValue)
       if (id) {
         this.seachVideoByUrl.emit(id);
       }
-        
     } else {
-      alert('Estamos fazendo teste')
+      this.searchByTitle.emit(title);
     }
   }
 

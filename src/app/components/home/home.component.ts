@@ -3,7 +3,12 @@ import { YoutubeService } from 'src/app/services/youtube.service';
 import { LocalstorageService } from '../../services/localstorage.service';
 import { YoutubeInterface } from '../../services/youtube.interface';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
+const setting_play = {
+  PLAYER: 1,
+  PAUSE: 2
+};
 
 @Component({
   selector: 'tes-home',
@@ -13,22 +18,39 @@ import { ToastrService } from 'ngx-toastr';
 export class HomeComponent implements OnInit {
   public videos: YoutubeInterface
   public tag:any;
+  public YT: any;
+  public player: any[];
+  public reframed: Boolean = false;
   
   constructor(
     private youtube: YoutubeService, 
     private localStorage: LocalstorageService,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private router: Router
   ) {
    
   }
-
+  // init() {
+  //   this.tag = document.createElement('script');
+  //   this.tag.src = 'https://www.youtube.com/iframe_api';
+  //   let firstScriptTag = (<any>window).document.getElementsByTagName('script')[0];
+  //   firstScriptTag.parentNode.insertBefore(this.tag, firstScriptTag);
+  // }
   ngOnInit() {
-    this.tag = document.createElement('script');
-    this.tag.src = 'https://www.youtube.com/iframe_api';
-    let firstScriptTag = (<any>window).document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(this.tag, firstScriptTag);
+    // this.init();
+
+
+    // (window as any)['onYouTubeIframeAPIReady'] = () => this.init();
 
     this.videos = this.localStorage.getAll()
+
+   
+
+    // for (let vd in this.videos) {
+    //   this.player[this.videos[vd].id] = this.startVideo(this.videos[vd])
+      
+    // }
+  
   }
 
 
@@ -38,7 +60,7 @@ export class HomeComponent implements OnInit {
           id: response.items[0].id,
           title: response.items[0].snippet.title,
           thumbnails: response.items[0].snippet.thumbnails.high.url,
-          play: false
+          play: 2
         }
         if (this.localStorage.save(video)) {
           this.videos = this.localStorage.getAll();
@@ -52,17 +74,25 @@ export class HomeComponent implements OnInit {
 
 
   stopVideo(video: YoutubeInterface) {
-    
     for (let v in this.videos) {
-      if (this.videos[v].id != video.id) {
-        this.videos[v].play = false;
+      if (this.videos[v].id !== video.id) {
+        this.videos[v].play = setting_play.PAUSE;
       }
     }
+    // this.localStorage.save(video);
+    // this.videos = this.localStorage.getAll();
+
+    // this.videos = this.localStorage.getAll();
   }
 
   deleteVideo(video: YoutubeInterface) {
     this.localStorage.deleteVideo(video);
     this.videos = this.localStorage.getAll();
+  }
+
+  goToSearchVideoByTitle(title: any) {
+    debugger
+    this.router.navigate(['/search', title]);
   }
 
 }

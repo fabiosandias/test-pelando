@@ -6,7 +6,7 @@
         <button 
             type="button" 
             class="add-video__button btn-default orange-background"
-            (click)="searchVideo()"
+            (click)="searchVideo(searchValue)"
         >
             <span *ngIf="isUrl()">Adicionar</span>
             <span *ngIf="!isUrl()">Buscar</span>

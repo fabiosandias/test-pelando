@@ -3,9 +3,7 @@
     <tes-header></tes-header>
   </div>
   
-  <div class="root__wrapper-body">
-    <router-outlet></router-outlet>
+  <div class="root__wrapper-body" [@routeAnimation]="getAnimationData(routerOutlet)">
+    <router-outlet #routerOutlet="outlet"></router-outlet>
   </div>
-
-  <!-- <tes-modal></tes-modal> -->
 </div>

@@ -2,6 +2,7 @@
     <div class="home__form">
         <tes-add-video
             (seachVideoByUrl)="seachVideoByUrl($event)"
+            (searchByTitle)="goToSearchVideoByTitle($event)"
         ></tes-add-video>
         <tes-divider></tes-divider>
         <tes-filter></tes-filter>
@@ -9,15 +10,17 @@
       </div>
     <div class="home__cards">
         <tes-video-card 
-            *ngFor="let video of videos; let i = index" 
+            *ngFor="let video of videos; let i = index;" 
             [index]="i" 
             [video]="video"
             (stopVideo)="stopVideo($event)"
             (deleteVideo)="deleteVideo($event)"
-            >
-
+             >
         </tes-video-card>
 
     </div>
 
 </div>
+
+<tes-modal></tes-modal>
+<!-- <router-outlet name="search"></router-outlet> -->
