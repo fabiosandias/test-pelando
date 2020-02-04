@@ -30,8 +30,6 @@ export class HomeComponent implements OnInit {
   ) {}
  
   ngOnInit() {
-    alert()
-    debugger;
     this.videos = this.localStorage.getAll();
   }
 
