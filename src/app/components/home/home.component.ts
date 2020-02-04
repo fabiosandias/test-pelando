@@ -16,7 +16,8 @@ const setting_play = {
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public videos: YoutubeInterface
+  public videos: YoutubeInterface[] = [];
+  public copyVideos: YoutubeInterface[] = [];
   public tag:any;
   public YT: any;
   public player: any[];
@@ -30,7 +31,7 @@ export class HomeComponent implements OnInit {
   ) {}
  
   ngOnInit() {
-    this.videos = this.localStorage.getAll();
+    this.updateVideo(this.localStorage.getAll());
   }
 
 
@@ -43,7 +44,7 @@ export class HomeComponent implements OnInit {
           play: 2
         }
         if (this.localStorage.save(video)) {
-          this.videos = this.localStorage.getAll();
+          this.updateVideo(this.localStorage.getAll());
           this.toast.success('Video salvo com sucesso!', 'Sucesso!');
         } else {
           this.toast.error('Este video não existe ou ja foi salvo na sua lista!', 'Opss!');
@@ -63,11 +64,32 @@ export class HomeComponent implements OnInit {
 
   deleteVideo(video: YoutubeInterface) {
     this.localStorage.deleteVideo(video);
-    this.videos = this.localStorage.getAll();
+
+    this.updateVideo(this.localStorage.getAll());
   }
 
   goToSearchVideoByTitle(title: any) {
-    this.router.navigate(['/home/search'], {queryParams: {titleSearch: title}});
+    this.router.navigate(['/search'], {queryParams: {titleSearch: title}});
+  }
+
+  filterByTitleFunc(filterValue) {
+    this.videos = this.copyVideos.filter(vd => {
+      return vd.title.toLowerCase().indexOf(filterValue.toLowerCase()) > -1;
+    });
+  }
+
+  clearCurrentFilterFunc() {
+    this.videos = this.copyVideos;
+  }
+
+  updateVideo(videos:YoutubeInterface[]) {
+    
+    this.videos = [];
+    for (let vd of videos) {
+      this.videos.push(vd)
+    }
+
+    this.copyVideos = this.videos.map(vd => Object.assign({}, vd));
   }
 
 }

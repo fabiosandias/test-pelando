@@ -51,9 +51,8 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   saveVideoAndBackHome() {
-    debugger;
     if (this.localStorage.save(this.video)) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/']);
       this.toast.success('Video salvo com sucesso!', 'Sucesso!');
     } else {
       this.toast.error('Este video não existe ou ja foi salvo na sua lista!', 'Opss!');
@@ -61,7 +60,6 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   selectVideo(video) {
-    debugger;
     this.video = video;
   }
 

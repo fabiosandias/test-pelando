@@ -29,7 +29,7 @@ export class YoutubeService {
   }
 
   getByTitle(title, maxResults): Observable<any> {
-    const url = `${YOUTUBE_API}${METHOD_SEARCH_YOUTUBE.SEARCH}?key=${this.apiKey}&title=${title}&order=title&part=snippet&type=video,id&maxResults=${maxResults}`;
+    const url = `${YOUTUBE_API}${METHOD_SEARCH_YOUTUBE.SEARCH}?key=${this.apiKey}&order=title&part=snippet&q=${title}&maxResults=${maxResults}`;
     return this.http.get<any>(url, this.httpOptions)
       .pipe(
         retry(1),

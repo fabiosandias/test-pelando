@@ -1,34 +1,32 @@
-<div class="video-card">
-    <div class="video-card__checkbox" *ngIf="isResult">
-    <span><input type="radio" (change)="saveVideo(video)" name="videoName" value="{{video.id}}"> </span>
-    </div>
-    <div class="video-card__content">
-    <div class="video-card__content-media iframe-container">
-        <img [hidden]="video.play === 1 || video.play < 1" [src]="video.thumbnails" alt="" class="thumbnail">
-        <youtube-player
-        [hidden]="video.play  > 1"
-            [videoId]="video.id"
-            (ready)="savePlayer($event)"
-            (change)="onStateChange($event)"
-            [playerVars]="playerVars"
-        >
-        </youtube-player>
-        
+<label class="video-card__label" for="{{video.id}}">
+    <div class="video-card">
+
+        <div class="video-card__checkbox" *ngIf="isResult">
+            <span><input id="{{video.id}}" type="radio" (change)="saveVideo(video)" name="videoName"
+                    value="{{video.id}}">
+            </span>
         </div>
-        <div class="video-card__title">
-        <p><span class="video-card__title--number">{{index + 1}}</span> {{video.title}}</p>
+        <div class="video-card__content">
+            <div class="video-card__content-media iframe-container">
+                <img [hidden]="video.play === 1 || video.play < 1" [src]="video.thumbnails" alt="" class="thumbnail">
+                <youtube-player [hidden]="video.play  > 1" [videoId]="video.id" (ready)="savePlayer($event)"
+                    (change)="onStateChange($event)" [playerVars]="playerVars">
+                </youtube-player>
+            </div>
+            <div class="video-card__title">
+                <p><span class="video-card__title--number">{{index + 1}}</span> {{video.title | slice:0:50}}</p>
+            </div>
+            <span class="video-card__play">
+                <button class="video-card__play--btn orange-background" (click)="onPlayer(video)">
+                    <i *ngIf="video.play  !== 1" class="fa fa-play"></i>
+                    <i *ngIf="video.play  === 1" class="fa fa-pause"></i>
+                </button>
+            </span>
+            <span class="video-card__close" *ngIf="!isResult">
+                <button type="button" (click)="deleteVideoById(video)" class="video-card__close--btn grey-background"><i
+                        class="fa fa-times"></i></button>
+            </span>
         </div>
-        <span class="video-card__play">
-            <button 
-                class="video-card__play--btn orange-background"
-                (click)="onPlayer(video)"
-            >
-                <i  *ngIf="video.play  !== 1" class="fa fa-play"></i>
-                <i *ngIf="video.play  === 1" class="fa fa-pause"></i>
-            </button>
-        </span>
-        <span class="video-card__close" *ngIf="!isResult">
-            <button type="button" (click)="deleteVideoById(video)" class="video-card__close--btn grey-background" ><i class="fa fa-times"></i></button>
-        </span>
+
     </div>
-</div>
+</label>

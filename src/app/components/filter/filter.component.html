@@ -1,8 +1,28 @@
 <div class="filter">
     <div class="filter__box-field">
-        <input type="text" class="filter__field-input input-form-default">
+        <input 
+            type="text"
+            ngModel [(ngModel)]="filterValue"
+            class="filter__field-input input-form-default">
     </div>
     <div class="filter__box-button">
-        <button type="button" class="filter__field-button btn-default grey-background">Filtrar</button>
+        <button
+            *ngIf="!isFilter" 
+            type="button"
+            class="filter__field-button btn-default grey-background"
+            (click)="applyFilter(filterValue)"
+         >
+            <span>Filtrar</span>
+    
+        </button>
+
+        <button 
+            *ngIf="isFilter"
+            type="button"
+            class="filter__field-button btn-default grey-background"
+            (click)="clearFilter()"
+         >
+            <span>Limpar Filtro</span>
+        </button>
     </div>
 </div>

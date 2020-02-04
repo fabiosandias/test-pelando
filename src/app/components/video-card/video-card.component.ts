@@ -37,11 +37,6 @@ export class VideoCardComponent implements OnInit {
 
   }
 
-  getUrlEmbad(id) {
-    this.safeURL = this._sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${id}?autoplay=0&controls=1`);
-    return this.safeURL;
-  }
-
   stopAllVideo(video) {
     this.stopVideo.emit(video)
   }
@@ -62,8 +57,6 @@ export class VideoCardComponent implements OnInit {
     else if (this.video.play !== 1) {
       this.player.playVideo();
     }
-
-    
   
   }
 
@@ -74,13 +67,5 @@ export class VideoCardComponent implements OnInit {
   savePlayer(player) {
     this.player = player;
   }
-  
-  // playVideo() {
-  //   this.player.playVideo();
-  // }
-  
-  // pauseVideo() {
-  //   this.player.pauseVideo();
-  // }
 
 }

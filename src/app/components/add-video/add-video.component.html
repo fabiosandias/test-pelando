@@ -10,8 +10,9 @@
             [disabled]="!searchValue"
             [ngClass]="{'grey-background-disabled' : !searchValue, 'orange-background' : searchValue}"
         >
-            <span *ngIf="isUrl()">Adicionar</span>
-            <span *ngIf="!isUrl()">Buscar</span>
+            <span *ngIf="!searchValue">Adicionar</span>
+            <span *ngIf="searchValue && isUrl()">Adicionar</span>
+            <span *ngIf="searchValue! && !isUrl()">Buscar</span>
         </button>
     </div>
 </div>

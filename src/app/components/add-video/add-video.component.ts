@@ -10,7 +10,7 @@ import { LocalstorageService } from '../../services/localstorage.service';
 })
 export class AddVideoComponent implements OnInit {
 
-  searchValue: string = '';
+  searchValue: string;
   videos: YoutubeService[];
 
   @Output() seachVideoByUrl = new EventEmitter();
@@ -18,7 +18,10 @@ export class AddVideoComponent implements OnInit {
 
 
   constructor(private youtube: YoutubeService, private localStorage: LocalstorageService) { }
-  ngOnInit() {}
+
+  ngOnInit() {
+    this.searchValue = '';
+  }
 
   isUrl() {
     if (!this.searchValue) {
@@ -30,7 +33,6 @@ export class AddVideoComponent implements OnInit {
   }
 
   searchVideo(title) {
-    debugger;
     if (this.isUrl()) {
       const id = this.getUrlId(this.searchValue)
       if (id) {

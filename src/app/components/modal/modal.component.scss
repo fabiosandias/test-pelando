@@ -60,8 +60,7 @@ bady {
 .modal__content {
   overflow  : hidden;
   width     : 600px;
-  min-height: 605px;
-  max-height: 790px;
+  height: 605px;
   margin    : 0 auto;
   z-index   : 1000;
   display   : flex;
@@ -74,6 +73,7 @@ bady {
   display              : grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows   : 1fr 1fr;
+  overflow-y: auto;
 }
 
 @media (max-width: 768px) {

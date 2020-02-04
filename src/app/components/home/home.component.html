@@ -3,10 +3,13 @@
         <tes-add-video
             (seachVideoByUrl)="seachVideoByUrl($event)"
             (searchByTitle)="goToSearchVideoByTitle($event)"
-        ></tes-add-video>
+        >
+        </tes-add-video>
         <tes-divider></tes-divider>
-        <tes-filter></tes-filter>
-      
+        <tes-filter
+            (filterByTitle)="filterByTitleFunc($event)"
+            (clearCurrentFilter)="clearCurrentFilterFunc()"
+        ></tes-filter>
       </div>
     <div class="home__cards">
         <tes-video-card 

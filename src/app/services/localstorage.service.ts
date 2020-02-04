@@ -39,7 +39,7 @@ export class LocalstorageService {
     return true;
   }
 
-  public getAll(): YoutubeInterface {
+  public getAll(): any {
     return this.storage.get(STORAGE_KEY)
   }
 
