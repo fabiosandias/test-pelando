@@ -5,6 +5,10 @@ import { retry, catchError, map} from 'rxjs/operators';
 import { Youtube } from './youtybe';
 import { YOUTUBE_API } from '../app.api';
 
+const METHOD_SEARCH_YOUTUBE = {
+  SEARCH: 'search',
+  VIDEOS: 'videos'
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -25,7 +29,7 @@ export class YoutubeService {
   }
 
   getByTitle(title, maxResults): Observable<any> {
-    const url = `${YOUTUBE_API}?key=${this.apiKey}&title=${title}&order=date&part=snippet&type=video,id&maxResults=${maxResults}`
+    const url = `${YOUTUBE_API}${METHOD_SEARCH_YOUTUBE.SEARCH}?key=${this.apiKey}&title=${title}&order=title&part=snippet&type=video,id&maxResults=${maxResults}`;
     return this.http.get<any>(url, this.httpOptions)
       .pipe(
         retry(1),
@@ -34,7 +38,7 @@ export class YoutubeService {
   }
 
   getByUrl(id, maxResults): Observable<any> {
-    const url = `${YOUTUBE_API}?key=${this.apiKey}&id=${id}&order=date&part=snippet&type=video,id&maxResults=${maxResults}&origin=http://localhost:4200';`
+    const url = `${YOUTUBE_API}${METHOD_SEARCH_YOUTUBE.VIDEOS}?key=${this.apiKey}&id=${id}&order=date&part=snippet&type=video,id&maxResults=${maxResults}`;
     return this.http.get<any>(url, this.httpOptions)
       .pipe(
         retry(1),

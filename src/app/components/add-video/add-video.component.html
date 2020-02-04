@@ -5,8 +5,10 @@
     <div class="add-video__box-button">
         <button 
             type="button" 
-            class="add-video__button btn-default orange-background"
+            class="add-video__button btn-default "
             (click)="searchVideo(searchValue)"
+            [disabled]="!searchValue"
+            [ngClass]="{'grey-background-disabled' : !searchValue, 'orange-background' : searchValue}"
         >
             <span *ngIf="isUrl()">Adicionar</span>
             <span *ngIf="!isUrl()">Buscar</span>

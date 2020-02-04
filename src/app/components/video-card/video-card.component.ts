@@ -10,15 +10,16 @@ import { YoutubeInterface } from '../../services/youtube.interface';
 })
 export class VideoCardComponent implements OnInit {
 
-  isResult: boolean = false;
   @Input() video: YoutubeInterface;
   @Input() index;
   @Input() tag;
+  @Input() isResult:boolean;  
   @Input() instanceYt;
   public safeURL: SafeResourceUrl;
 
   @Output() stopVideo = new EventEmitter();
   @Output() deleteVideo = new EventEmitter();
+  @Output() saveVideoModal = new EventEmitter();
 
   title = 'dummyApp-YTIFrameAPI';
 
@@ -47,6 +48,10 @@ export class VideoCardComponent implements OnInit {
 
   deleteVideoById(video) {
     this.deleteVideo.emit(video)
+  }
+
+  saveVideo(video) {
+    this.saveVideoModal.emit(video)
   }
 
   onPlayer(video) {

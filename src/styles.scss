@@ -31,6 +31,9 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
     background: rgb(103, 98, 95);
     background: linear-gradient(180deg, rgba(103, 98, 95, 1) 0%, rgba(191, 178, 169, 1) 26%, rgba(232, 222, 215, 1) 100%);
 }
+.grey-background-disabled {
+    background: #dddddd;
+}
 
 .orange-background {
     background: rgb(158,68,7);

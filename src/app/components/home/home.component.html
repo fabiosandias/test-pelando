@@ -15,12 +15,12 @@
             [video]="video"
             (stopVideo)="stopVideo($event)"
             (deleteVideo)="deleteVideo($event)"
-             >
+            [isResult]="false"
+        >
         </tes-video-card>
 
     </div>
 
 </div>
 
-<!-- <tes-modal></tes-modal> -->
-<!-- <router-outlet name="search"></router-outlet> -->
+<router-outlet></router-outlet>

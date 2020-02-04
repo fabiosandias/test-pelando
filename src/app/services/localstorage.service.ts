@@ -46,12 +46,6 @@ export class LocalstorageService {
   public deleteVideo(video: YoutubeInterface) {
     const anotherTodolist = this.storage.get(STORAGE_KEY) || [];
 
-    // for (let v in anotherTodolist) {
-    //   if (anotherTodolist[v].id != video.id) {
-    //     anotherTodolist.splice(parseInt(v), 1);
-    //   }
-    // }
-
     anotherTodolist.forEach((item, index) => {
       if (item.id === video.id) {
         anotherTodolist.splice(index, 1);

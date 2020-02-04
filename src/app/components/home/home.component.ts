@@ -27,30 +27,12 @@ export class HomeComponent implements OnInit {
     private localStorage: LocalstorageService,
     private toast: ToastrService,
     private router: Router
-  ) {
-   
-  }
-  // init() {
-  //   this.tag = document.createElement('script');
-  //   this.tag.src = 'https://www.youtube.com/iframe_api';
-  //   let firstScriptTag = (<any>window).document.getElementsByTagName('script')[0];
-  //   firstScriptTag.parentNode.insertBefore(this.tag, firstScriptTag);
-  // }
+  ) {}
+ 
   ngOnInit() {
-    // this.init();
-
-
-    // (window as any)['onYouTubeIframeAPIReady'] = () => this.init();
-
-    this.videos = this.localStorage.getAll()
-
-   
-
-    // for (let vd in this.videos) {
-    //   this.player[this.videos[vd].id] = this.startVideo(this.videos[vd])
-      
-    // }
-  
+    alert()
+    debugger;
+    this.videos = this.localStorage.getAll();
   }
 
 
@@ -79,10 +61,6 @@ export class HomeComponent implements OnInit {
         this.videos[v].play = setting_play.PAUSE;
       }
     }
-    // this.localStorage.save(video);
-    // this.videos = this.localStorage.getAll();
-
-    // this.videos = this.localStorage.getAll();
   }
 
   deleteVideo(video: YoutubeInterface) {
@@ -91,8 +69,7 @@ export class HomeComponent implements OnInit {
   }
 
   goToSearchVideoByTitle(title: any) {
-    debugger
-    this.router.navigate(['/search', title]);
+    this.router.navigate(['/home/search'], {queryParams: {titleSearch: title}});
   }
 
 }

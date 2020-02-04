@@ -1,1 +1,1 @@
-export const YOUTUBE_API = 'https://www.googleapis.com/youtube/v3/videos';
+export const YOUTUBE_API = 'https://www.googleapis.com/youtube/v3/';
